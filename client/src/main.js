@@ -9,7 +9,8 @@ import axios from "axios";
 import VueSwal from "vue-swal";
 import store from "./store";
 
-axios.defaults.baseURL = process.env.baseURL || "http://localhost:3080/api";
+axios.defaults.baseURL =
+  process.env.baseURL || "https://proconverter.herokuapp.com/api";
 
 // Install BootstrapVue
 Vue.use(BootstrapVue);
