@@ -55,19 +55,17 @@ export default {
   methods: {
     destroyRate(id, index) {
       //Delete request based on id of rate given.
-      axios
-        .delete(`/${id}`, {}, { Authorization: localStorage.getItem("jwt") })
-        .then((res) => {
-          if (res.status === 200) {
-            //If everything went fine aka status code ===200, remove it from the array of rates.
-            swal("Success!", "Rate was successfully deleted.", "success");
-            const { removedNo2, removed } = res.data;
+      axios.delete(`/${id}`).then((res) => {
+        if (res.status === 200) {
+          //If everything went fine aka status code ===200, remove it from the array of rates.
+          swal("Success!", "Rate was successfully deleted.", "success");
+          const { removedNo2, removed } = res.data;
 
-            this.rates = this.rates.filter((e) => {
-              e.Actions !== removedNo2._id || e.Actions !== removed._id;
-            });
-          }
-        });
+          this.rates = this.rates.filter((e) => {
+            e.Actions !== removedNo2._id || e.Actions !== removed._id;
+          });
+        }
+      });
     },
     alertDisplay(id, index) {
       swal(`You are about to delete the rate at index ${index}`, {

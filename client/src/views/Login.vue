@@ -65,6 +65,7 @@ export default {
           localStorage.setItem("jwt", token);
 
           if (token) {
+            axios.defaults.headers.common["Authorization"] = token;
             this.$store
               .dispatch("login", data)
               .then(() => this.$router.push("/"))

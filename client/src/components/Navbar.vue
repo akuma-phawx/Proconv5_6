@@ -45,6 +45,7 @@ export default {
       console.log("Logging Out");
       let temp = this.xusername;
       localStorage.removeItem("jwt");
+      delete axios.defaults.headers.common["Authorization"];
       this.$store.dispatch("logout").then(() => {
         this.$router.push("/");
       });

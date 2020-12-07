@@ -68,19 +68,18 @@ export default {
         targetId: this.targetCurrency,
         rate: this.rate,
       };
+
       //post request to add into DB
-      axios
-        .post("/", toAdd, { Authorization: localStorage.getItem("jwt") })
-        .then((res) => {
-          console.log(res);
-          if (res.status === 200) {
-            this.sourceCurrency = null;
-            this.targetCurrency = null;
-            this.rate = "";
-            this.$router.push("/rates");
-            swal("Success", "Rate Added Successfully", "success");
-          }
-        });
+      axios.post("/", toAdd).then((res) => {
+        console.log(res);
+        if (res.status === 200) {
+          this.sourceCurrency = null;
+          this.targetCurrency = null;
+          this.rate = "";
+          this.$router.push("/rates");
+          swal("Success", "Rate Added Successfully", "success");
+        }
+      });
     },
     //Handling the countdown of my flash message.
     countDownChanged(dismissCountDown) {
