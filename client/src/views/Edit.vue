@@ -121,14 +121,18 @@ export default {
     },
     updateRate(startId, targetId) {
       const data = { rate: this.newRateGiven };
-      axios.put(`/${startId}/${targetId}`, data).then((res) => {
-        if (res.status === 200) {
-          this.$router.push("/rates");
-          swal("Success", "Rate Updated Successfully", "success");
-        } else {
-          swal("Error", e.data.message, "error");
-        }
-      });
+      axios
+        .put(`/${startId}/${targetId}`, data, {
+          Authorization: localStorage.getItem("jwt"),
+        })
+        .then((res) => {
+          if (res.status === 200) {
+            this.$router.push("/rates");
+            swal("Success", "Rate Updated Successfully", "success");
+          } else {
+            swal("Error", e.data.message, "error");
+          }
+        });
     },
     //Cleaning function for selections and inputs
     clean() {
