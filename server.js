@@ -18,6 +18,7 @@ app.use(morgan("dev")); //Middleware for requesting logging
 //My Endpoints
 const authRoutes = require("./api/routes/authRoutes");
 const rateRoutes = require("./api/routes/rateRoutes");
+const { static } = require("express");
 
 //connecting to mongo
 mongoose.connect(mongoUri, {
@@ -50,6 +51,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/auth", authRoutes);
 app.use("/api", rateRoutes);
 
+app.use(static("./client/dist"));
 //Handling Requests
 app.listen(PORT, () => {
   console.log(`Handling requests @ ${PORT}`);
