@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "npm run --prefix ./client build && node server.js"
+    "start": "npm run --prefix ./client build && node server.js",
+    "heroku-postbuild": "cd client && npm run build"
   },
   "keywords": [],
   "author": "",
