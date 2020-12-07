@@ -12,6 +12,10 @@ import store from "./store";
 axios.defaults.baseURL =
   process.env.baseURL || "https://proconverter.herokuapp.com/api";
 
+const token = localStorage.getItem("jwt");
+if (token) {
+  axios.defaults.headers.common["Authorization"] = token;
+}
 // Install BootstrapVue
 Vue.use(BootstrapVue);
 // Optionally install the BootstrapVue icon components plugin
