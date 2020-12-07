@@ -46,10 +46,6 @@ export default {
     },
   },
   methods: {
-    testo() {
-      console.log("testtest");
-    },
-
     login() {
       const username = this.username;
       const password = this.password;
@@ -62,13 +58,14 @@ export default {
         .post("/auth/login", data)
         .then((res) => {
           let token = res.data.token;
-          localStorage.setItem("jwt", token);
+          localStorage.setItem("jwt", token); //Grabbing the jwt token
 
           if (token) {
-            axios.defaults.headers.common["Authorization"] = token;
+            //if we have a token, aka if we got a user
+            axios.defaults.headers.common["Authorization"] = token; //Setting the header we will need for auth requests
             this.$store
-              .dispatch("login", data)
-              .then(() => this.$router.push("/"))
+              .dispatch("login", data) //Action login from store
+              .then(() => this.$router.push("/")) //Redirect to /
               .catch((err) => console.log(err));
             swal("Success", `Welcome Back ${this.xusername}`, "success");
           }
@@ -76,6 +73,7 @@ export default {
         .catch((e) => {
           console.error(e);
           if (e.response.status == 401) {
+            //Server Respond
             this.username = "";
             this.password = "";
             swal("Woops!", "Wrong Credentials", "warning");

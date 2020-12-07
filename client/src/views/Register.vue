@@ -70,11 +70,12 @@ export default {
           let token = res.data.token;
 
           if (token) {
-            localStorage.setItem("jwt", token);
+            //If registration was successfull
+            localStorage.setItem("jwt", token); //Setting our token
             axios.defaults.headers.common["Authorization"] = token;
             this.$store
-              .dispatch("register", user)
-              .then(() => this.$router.push("/"))
+              .dispatch("register", user) //Store action called register
+              .then(() => this.$router.push("/")) //Redirect to /
               .catch((err) => console.log(err));
             swal(
               "Success",
@@ -86,6 +87,7 @@ export default {
           }
         })
         .catch((e) => {
+          //Cleaning input if wrong something went wrong
           console.log(e.response);
           if (e.response.status == 401) {
             this.username = "";

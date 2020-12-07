@@ -94,9 +94,9 @@ module.exports.getSpecificRate = async (req, res) => {
       startingCurrency: sid,
       targetCurrency: tid,
     });
-    console.log(found);
+    // console.log(found); DEBUG
     const { rate } = found[0];
-    console.log(rate);
+    // console.log(rate);DEBUG
     if (!found) throw Error("Something went wrong while searching for rate");
     res.status(200).json(rate);
   } catch (e) {
