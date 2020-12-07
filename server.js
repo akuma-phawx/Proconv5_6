@@ -11,6 +11,7 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const path = require("path");
 const app = express();
 
 app.use(morgan("dev")); //Middleware for requesting logging
@@ -51,7 +52,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/auth", authRoutes);
 app.use("/api", rateRoutes);
 
-app.use("/", express.static("./client/dist"));
+app.use(express.static(path.join(dirname, "./dist")));
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(dirname, "./dist", "index.html"));
+});
 //Handling Requests
 app.listen(PORT, () => {
   console.log(`Handling requests @ ${PORT}`);
