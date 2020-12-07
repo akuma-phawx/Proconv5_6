@@ -39,7 +39,7 @@ db.once("open", () => {
 //Middleware Below
 //registering cors
 const corsOptions = {
-  origin: "http://localhost:8080",
+  origin: ["https://proconverter.herokuapp.com/", "http://localhost:8080"],
   credentials: true,
   exposedHeaders: ["set-cookie"],
 };
