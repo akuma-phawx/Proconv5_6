@@ -51,7 +51,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/auth", authRoutes);
 app.use("/api", rateRoutes);
 
-app.use(static("./client/dist"));
+app.use(express.static("./client/dist"));
 //Handling Requests
 app.listen(PORT, () => {
   console.log(`Handling requests @ ${PORT}`);
