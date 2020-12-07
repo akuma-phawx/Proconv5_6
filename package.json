@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js && npm run serve"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
