@@ -13,7 +13,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path");
 const app = express();
-
+// "heroku-postbuild": "cd client && npm install && npm run build"
 app.use(morgan("dev")); //Middleware for requesting logging
 
 //My Endpoints
