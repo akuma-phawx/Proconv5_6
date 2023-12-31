@@ -1,4 +1,4 @@
-# Proconverter
+# Pro-converter
 
 A currency converter made with Node, Express, Mongo, Vue. Includes JWT Authentication and implements a CRUD system.
 
